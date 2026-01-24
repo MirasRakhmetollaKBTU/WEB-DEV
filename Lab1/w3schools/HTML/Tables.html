@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TABLES</title>
+
+        <style>
+            /* table, td, th {
+                border: 1px solid black;
+                border-collapse: collapse;
+            } */
+
+            table, td, th {
+                border: 1px solid black;
+                border-radius: 15px;
+                border-color: darkblue;
+            }
+
+            td, th {
+                padding:50px;
+            }
+
+            /* th {
+                background-color: aqua;
+            }
+
+            td {
+                background-color: bisque;
+            } */
+
+            tr:nth-child(even) {
+                background-color: #FF00002F;
+                border-bottom: 1px solid #ddd;
+            }
+
+            td:nth-child(even) {
+                background-color: #0000FF2f;
+            }
+
+            tr:hover {
+                background-color: #00FF00FF;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table style="border: 1px solid black;">
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+            </tr>
+
+            <tr>
+                <td>Content 1</td>
+                <td>Content 2</td>
+                <td>Content 3</td>
+            </tr>
+            
+            <tr>
+                <td>Content 4</td>
+                <td>Content 5</td>
+                <td>Content 6</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table style="width:100%;">
+            <tr>
+                <th>Header 1</th>
+                <th style="width: 70%;">Header 2</th>
+                <th>Header 3</th>
+            </tr>
+
+            <tr>
+                <td>Content 1</td>
+                <td>Content 2</td>
+                <td>Content 3</td>
+            </tr>
+            
+            <tr>
+                <td>Content 4</td>
+                <td>Content 5</td>
+                <td>Content 6</td>
+            </tr>
+        </table>
+        
+        <hr>
+ 
+        <table style="width:100%;">
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+            </tr>
+
+            <tr style="height:200px">
+                <td>Content 1</td>
+                <td>Content 2</td>
+                <td>Content 3</td>
+            </tr>
+            
+            <tr>
+                <td>Content 4</td>
+                <td>Content 5</td>
+                <td>Content 6</td>
+            </tr>
+
+        </table>
+
+        <hr>
+
+        <table style="text-align: left; width:700px; height:700px; font-size:50px;">
+            <tr>
+                <th colspan="2">Header 1</th>
+                <th>Header 2</th>
+            </tr>
+
+            <tr>
+                <td>Content 1</td>
+                <td>Content 2</td>
+                <td rowspan="2">Content 3</td>
+            </tr>
+            
+            <tr>
+                <td>Content 4</td>
+                <td>Content 5</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table>
+            <colgroup>
+                <col span="2" style="background-color: pink;">
+                <col span="1" style="visibility: collapse;">
+            </colgroup>
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+            </tr>
+
+            <tr>
+                <td>Content 1</td>
+                <td>Content 2</td>
+                <td>Content 3</td>
+            </tr>
+            
+            <tr>
+                <td>Content 4</td>
+                <td>Content 5</td>
+                <td>Content 6</td>
+            </tr>
+        </table>
+
+        <hr>
+    </body>
+</html>
