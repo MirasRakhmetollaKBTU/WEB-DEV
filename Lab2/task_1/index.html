@@ -8,32 +8,51 @@
         <title>Facebook</title>
     </head>
     <body>
-        <main id="page">
-            <section id="container">
-                <div id="left">
-                    <h1 id="logo">facebook</h1>
+        <main class="page">
+            <section class="container">
+                <div class="left">
+                    <h1 class="logo">facebook</h1>
 
-                    <p id="paragraph">
+                    <p class="paragraph">
                         Facebook помогает вам всегда остоватся связи и общятся co своими знакомыми.
                     </p>
                 </div>
 
-                <div id="right">
+                <div class="right">
                     <form action="">
-                        <fieldset id="auth">
-                            <input class="fild" type="text" placeholder="Электронный адресс или номер телефона">
-                            <input class="fild" type="password" placeholder="Пароль">
+                        <fieldset class="auth">
+                            <label for="login" style="display:none;">
+                                Электронный адрес или номер телефона
+                            </label>
+                            <input
+                                id="login"
+                                class="fild"
+                                type="text"
+                                placeholder="Электронный адресс или номер телефона"
+                            >
+
+                            <label for="password" style="display:none;">
+                                Пароль
+                            </label>
+                            <input
+                                id="password"
+                                class="fild"
+                                type="password"
+                                placeholder="Пароль"
+                            >
 
                             <button class="btn btn-login" type="button">Вход</button>
                             <a class="link" href="#">Забыли пароль?</a>
 
                             <hr class="devider">
 
-                            <button class="btn btn-create" type="button">Создать новый аккаунт</button>
+                            <button class="btn btn-create" type="button">
+                                Создать новый аккаунт
+                            </button>
                         </fieldset>
                     </form>                   
 
-                    <p id="bellow"><b>Создать страницу</b> знаменитости, музыкальной группы или компании</p>
+                    <p class="bellow"><b>Создать страницу</b> знаменитости, музыкальной группы или компании</p>
                 </div>
             </section>
         </main> 
