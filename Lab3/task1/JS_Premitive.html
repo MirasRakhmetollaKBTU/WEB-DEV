@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "Hello";
+
+        str.test = 5; // (*)
+
+        alert(str.test);
+
+        let a = +prompt("The first number?", "");
+        let b = +prompt("The second number?", "");
+
+        alert( a + b );
+
+        alert( 6.35.toFixed(20) ); // 6.34999999999999964473
+        alert( 1.35.toFixed(20) ); // 1.35000000000000008882
+        alert( (6.35 * 10).toFixed(20) ); // 63.50000000000000000000 
+        alert( Math.round(6.35 * 10) / 10 );   
+
+        function readNumber() {
+        let num;
+
+        do {
+            num = prompt("Enter a number please?", 0);
+        } while ( !isFinite(num) );
+
+        if (num === null || num === '') return null;
+
+        return +num;
+        }
+
+        alert(`Read: ${readNumber()}`);
+
+        let i = 0;
+        while (i < 11) {
+        i += 0.2;
+        if (i > 9.8 && i < 10.2) alert( i );
+        }
+
+        function random(min, max) {
+        return min + Math.random() * (max - min);
+        }
+
+        alert( random(1, 5) );
+        alert( random(1, 5) );
+        alert( random(1, 5) )
+
+        function ucFirst(str) {
+        if (!str) return str;
+
+        return str[0].toUpperCase() + str.slice(1);
+        }
+
+        alert( ucFirst("john") );
+        function checkSpam(str) {
+        let lowerStr = str.toLowerCase();
+
+        return lowerStr.includes('viagra') || lowerStr.includes('xxx');
+        }
+
+        alert( checkSpam('buy ViAgRA now') );
+        alert( checkSpam('free xxxxx') );
+        alert( checkSpam("innocent rabbit") );
+
+        function truncate(str, maxlength) {
+        return (str.length > maxlength) ?
+            str.slice(0, maxlength - 1) + '…' : str;
+        }
+        
+        function extractCurrencyValue(str) {
+        return +str.slice(1);
+        }
+
+        let fruits = ["Apples", "Pear", "Orange"];
+
+        let shoppingCart = fruits;
+
+        shoppingCart.push("Banana");
+
+        alert( fruits.length ); // 4
+
+        let styles = ["Jazz", "Blues"];
+        styles.push("Rock-n-Roll");
+        styles[Math.floor((styles.length - 1) / 2)] = "Classics";
+        alert( styles.shift() );
+        styles.unshift("Rap", "Reggae");
+
+        let arr = ["a", "b"];
+
+        arr.push(function() {
+        alert( this );
+        })
+
+        arr[2](); // a,b,function(){...}
+
+        
+        function sumInput() {
+
+        let numbers = [];
+
+        while (true) {
+
+            let value = prompt("A number please?", 0);
+
+            // should we cancel?
+            if (value === "" || value === null || !isFinite(value)) break;
+
+            numbers.push(+value);
+        }
+
+        let sum = 0;
+        for (let number of numbers) {
+            sum += number;
+        }
+        return sum;
+        }
+
+        alert( sumInput() );
+
+        function camelize(str) {
+        return str
+            .split('-') // splits 'my-long-word' into array ['my', 'long', 'word']
+            .map(
+            // capitalizes first letters of all array items except the first one
+            // converts ['my', 'long', 'word'] into ['my', 'Long', 'Word']
+            (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+            )
+            .join(''); // joins ['my', 'Long', 'Word'] into 'myLongWord'
+        }
+
+        function filterRange(arr, a, b) {
+  // added brackets around the expression for better readability
+        return arr.filter(item => (a <= item && item <= b));
+        }
+
+        let arr1 = [5, 3, 8, 1];
+
+        let filtered = filterRange(arr1, 1, 4);
+
+        alert( filtered ); // 3,1 (matching values)
+
+        alert( arr1 ); // 5,3,8,1 (not modified)
+
+        function filterRangeInPlace(arr2, a, b) {
+
+        for (let i = 0; i < arr2.length; i++) {
+            let val = arr2[i];
+
+            // remove if outside of the interval
+            if (val < a || val > b) {
+            arr2.splice(i, 1);
+            i--;
+            }
+        }
+
+        }
+
+        let arr2 = [5, 3, 8, 1];
+
+        filterRangeInPlace(arr2, 1, 4); // removed the numbers except from 1 to 4
+
+        alert( arr2 ); // [3, 1]
+
+        let arr3 = [5, 2, 1, -10, 8];
+
+        arr3.sort((a, b) => b - a);
+
+        alert( arr3 );
+
+        function copySorted(arr) {
+        return arr.slice().sort();
+        }
+
+        let arr4 = ["HTML", "JavaScript", "CSS"];
+
+        let sorted = copySorted(arr4);
+
+        alert( sorted );
+        alert( arr4 );
+
+        function Calculator() {
+
+        this.methods = {
+            "-": (a, b) => a - b,
+            "+": (a, b) => a + b
+        };
+
+        this.calculate = function(str) {
+
+            let split = str.split(' '),
+            a = +split[0],
+            op = split[1],
+            b = +split[2];
+
+            if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+            return NaN;
+            }
+
+            return this.methods[op](a, b);
+        };
+
+        this.addMethod = function(name, func) {
+            this.methods[name] = func;
+        };
+        }
+
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 28 };
+
+        let users = [ john, pete, mary ];
+
+        let names = users.map(item => item.name);
+
+        alert( names ); // John, Pete, Mary
+
+        function formatDate(date) {
+        let dayOfMonth = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let hour = date.getHours();
+        let minutes = date.getMinutes();
+        let diffMs = new Date() - date;
+        let diffSec = Math.round(diffMs / 1000);
+        let diffMin = diffSec / 60;
+        let diffHour = diffMin / 60;
+
+        // formatting
+        year = year.toString().slice(-2);
+        month = month < 10 ? '0' + month : month;
+        dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
+        hour = hour < 10 ? '0' + hour : hour;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+
+        if (diffSec < 1) {
+            return 'right now';
+        } else if (diffMin < 1) {
+            return `${diffSec} sec. ago`
+        } else if (diffHour < 1) {
+            return `${diffMin} min. ago`
+        } else {
+            return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`
+        }
+        }
+            </script>
+</body>
+</html>

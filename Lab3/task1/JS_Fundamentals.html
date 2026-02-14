@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello World</title>
+    </head>
+    <body>
+
+        <p>Before script</p>
+        
+        <p>after script</p>
+
+        <script src="exercises/fundamentals/t1.js"></script>
+        <script src="exercises/fundamentals/t2.js"></script>
+        <script src="exercises/fundamentals/t3.js"></script>
+        <script src="exercises/fundamentals/t4.js"></script>
+        <script src="exercises/fundamentals/t5.js"></script>
+        <script src="exercises/fundamentals/t7.js"></script>
+
+        <script>
+            let value = prompt('What is the "official" name of JavaScript?', '');
+
+            if (value == 'ECMAScript') {
+            alert('Right!');
+            } else {
+            alert("You don't know? ECMAScript!");
+            }
+
+            let value1 = prompt('Type a number', 0);
+
+            if (value > 0) {
+            alert( 1 );
+            } else if (value < 0) {
+            alert( -1 );
+            } else {
+            alert( 0 );
+            }
+
+            let result = (a + b < 4) ? 'Below' : 'Over';
+            
+            let message = (login == 'Employee') ? 'Hello' :
+            (login == 'Director') ? 'Greetings' :
+            (login == '') ? 'No login' :
+            '';
+
+            alert( null || 2 || undefined );
+
+            alert(1 && null && 2);
+
+            let userName = prompt("Who's there?", '');
+
+            if (userName === 'Admin') {
+
+            let pass = prompt('Password?', '');
+
+            if (pass === 'TheMaster') {
+                alert( 'Welcome!' );
+            } else if (pass === '' || pass === null) {
+                alert( 'Canceled' );
+            } else {
+                alert( 'Wrong password' );
+            }
+
+            } else if (userName === '' || userName === null) {
+            alert( 'Canceled' );
+            } else {
+            alert( "I don't know you" );
+            }
+
+            i = 0;
+            while (i < 3) {
+            alert( `number ${i}!` );
+            i++;
+            }
+
+            let a = 2 + 2;
+
+            switch (a) {
+            case 3:
+                alert( 'Too small' );
+                break;
+            case 4:
+                alert( 'Exactly!' );
+                break;
+            case 5:
+                alert( 'Too big' );
+                break;
+            default:
+                alert( "I don't know such values" );
+            }
+            function showMessage(from, text) {
+
+            from = '*' + from + '*'; // make "from" look nicer
+
+            alert( from + ': ' + text );
+            }
+
+            let from = "Ann";
+
+            showMessage(from, "Hello"); // *Ann*: Hello
+
+            // the value of "from" is the same, the function modified a local copy
+            alert( from ); //
+
+            function showPrimes(n) {
+            nextPrime: for (let i = 2; i < n; i++) {
+
+                for (let j = 2; j < i; j++) {
+                if (i % j == 0) continue nextPrime;
+                }
+
+                alert( i ); // a prime
+            }
+            }
+
+            function ask(question, yes, no) {
+            if (confirm(question)) yes()
+            else no();
+            }
+
+            ask(
+            "Do you agree?",
+            function() { alert("You agreed."); },
+            function() { alert("You canceled the execution."); }
+            );
+
+            let age = prompt("What is your age?", 18);
+
+            let welcome = (age < 18) ?
+            () => alert('Hello!') :
+            () => alert("Greetings!");
+
+            welcome();
+        </script>
+
+
+    </body>
+</html>
