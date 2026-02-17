@@ -1,0 +1,49 @@
+<header class="header glass inside-placement-GG_Child">
+  <h1>ToDO list</h1>
+  <h1 class="sub-title">Add • Done • Delete</h1>
+</header>
+
+<main>
+  <section class="page glass-main">
+    <div class="title-row">
+      <h2>ToDo List</h2>
+
+      <p class="stats" id="Stats_Text">
+        {{ total }} tasks • {{ done }} done • {{ left }} left
+      </p>
+    </div>
+
+    <form id="ToDoForm" autocomplete="off" (submit)="addTask($event)">
+      <label for="TaskInput"></label>
+
+      <input
+        type="text"
+        id="TaskInput"
+        name="task"
+        placeholder="New Task"
+        maxlength="120"
+        required
+        [(ngModel)]="newTask"
+      />
+
+      <button class="btn-primary" type="submit" id="addBtn">Add</button>
+    </form>
+
+    <ul id="taskList" autocomplete="off">
+      <li *ngFor="let todo of todos; let i = index" [class.done]="todo.done">
+        <input
+          type="checkbox"
+          class="glass-checkbox"
+          [checked]="todo.done"
+          (change)="toggleTodo(todo)"
+        />
+
+        <span>{{ todo.text }}</span>
+
+        <button class="del-btn" type="button" (click)="deleteTodo(i)">X</button>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer></footer>
