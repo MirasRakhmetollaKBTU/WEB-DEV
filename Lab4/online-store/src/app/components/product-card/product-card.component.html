@@ -1,0 +1,46 @@
+
+<article class="product-card glass-main"
+>
+        <a class="img-wrap" [href]="product.link" target="_blank" rel="noopener">
+            <img [src]="mainImage" [alt]="product.name" />
+        </a>
+
+
+        <div class="thumbs" *ngIf="product.images?.length">
+            <button
+            type="button"
+            class="thumb glass-main"
+            *ngFor="let img of product.images"
+            (click)="setImage(img)"
+            [class.active]="img === mainImage"
+            >
+            <img [src]="img" [alt]="product.name" />
+            </button>
+        </div>
+
+        <h3 class="name">
+            <a [href]="product.link" target="_blank" rel="noopener">{{ product.name }}</a>
+        </h3>
+
+        <p class="desc">{{ product.description }}</p>
+
+        <div class="meta">
+            <div class="price">{{ product.price | number }} ₸</div>
+
+            <div class="rating" title="rating">
+            <span *ngFor="let s of getStars()">
+                <span class="star" [class.filled]="product.rating >= s">★</span>
+            </span>
+            <span class="badge">{{ product.rating }}</span>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn glass-main" type="button" (click)="shareWhatsApp()">
+            WhatsApp
+            </button>
+            <button class="btn glass-main" type="button" (click)="shareTelegram()">
+            Telegram
+            </button>
+        </div>
+    </article>

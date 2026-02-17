@@ -1,0 +1,15 @@
+<section
+  class="catalog glass-main"
+  (mousemove)="setSpotlight($event)"
+  (mouseenter)="setSpotlight($event)"
+  (mouseleave)="resetSpotlight()"
+>
+  <h2 class="title">Kaspi Catalog</h2>
+
+  <div class="grid">
+    <app-product-card
+      *ngFor="let p of products"
+      [product]="p"
+    ></app-product-card>
+  </div>
+</section>

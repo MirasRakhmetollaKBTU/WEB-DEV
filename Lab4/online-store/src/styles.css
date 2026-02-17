@@ -1,0 +1,351 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+.inside-placment-GG_child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.header {
+    position: fixed;
+    top  : 10px;
+    left : 10px;
+    right: 10px;
+
+    border: #ffffffA1 solid 1px;
+    border-radius: 10px;
+
+    font-size: 13px;
+
+    padding: 0 2%;
+
+    z-index: 10;
+
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.sub-title {
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffffffB1;
+    text-align:end;
+    padding-bottom: 4px;
+}
+
+.glass {
+    background-color: rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45),
+                inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+.glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.06) 35%,
+        rgba(255,255,255,0.02) 65%,
+        rgba(255,255,255,0.00)
+    );
+
+    opacity: 0.9;
+}
+
+.glass::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        radial-gradient(700px 120px at 20% 0%,
+        rgba(255,255,255,0.18),
+        transparent 60%),
+        radial-gradient(500px 120px at 80% 0%,
+        rgba(255,255,255,0.12),
+        transparent 60%);
+    opacity: 0.7;
+}
+
+.glass:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+        0 16px 40px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.24);
+}
+
+main {
+    max-width: 760px;
+    margin: 90px auto 26px; 
+    padding: 0 16px;
+}
+
+.page {
+    display: grid;
+
+    grid-template-rows: max-content max-content 1fr;
+    gap: 20px;;
+
+    padding: 18px;
+    border-radius: 18px;
+
+    margin-top: 20%;
+}
+
+.title-row {
+    display: flex;
+    align-items: baseline;   
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.title-row h2 {
+    margin: 0;
+    font-size: 20px;
+
+}
+
+.stats {
+    margin: 0;
+    font-size: 13px;
+    color: #ffffffB1;
+}
+
+form input {
+    flex: 1;
+    height: 2.3em;
+    font-size: 15px;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(0,0,0,0.25);
+    color: white;
+    outline: none;
+    width: 80%;
+    margin-right: 15px;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+form input:focus {
+    border-color: rgba(255,255,255,0.28);
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+    transform: translateY(-2px) scale(1.02);
+
+}
+
+form input:hover {
+    border-color: rgba(255,255,255,0.28);
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.btn-primary {
+    height: 2.3em;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.10);
+    color: white;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.btn-primary:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.del-btn {
+    height: 2.3em;
+    padding: 0 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255, 0, 0, 0.2);
+    color: white;
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.del-btn:hover {
+    background: rgba(255, 0, 0,0.5);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.done span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.glass-main {
+    --mx: 50%;
+    --my: 30%;
+    --spot: 0;
+
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.glass-main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+        radial-gradient(
+        50px 50px at var(--mx) var(--my),
+        rgba(255,255,255, calc(0.18 * var(--spot))),
+        transparent 65%
+        ),
+
+        linear-gradient(180deg,
+        rgba(255, 255, 255, 0.08),
+        transparent 55%);
+
+    opacity: 1;
+}
+
+.glass-main::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+
+    background:
+    radial-gradient(
+        420px 320px at var(--mx) var(--my),
+        rgba(255,255,255, calc(0.10 * var(--spot))),
+        transparent 70%
+    ),
+    repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.03) 0px,
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 7px
+    );
+
+    opacity: 0.12;
+}
+
+.glass-main:hover {
+  transform: translateY(-2px) scale(1.01);
+  border-color: rgba(255,255,255,0.22);
+  --spot: 1;
+}
+
+.glass-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    cursor: pointer;
+    position: relative;
+
+    transition: 
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+}
+
+.glass-checkbox:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+.glass-checkbox:checked {
+    background: rgba(255,255,255,0.25);
+    box-shadow: 
+        0 0 12px rgba(255,255,255,0.5),
+        inset 0 0 6px rgba(255,255,255,0.5);
+}
+
+.glass-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+}
+
+#taskList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#taskList li {
+    padding: 14px;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.12);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: 
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+#taskList li:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.55);
+}
