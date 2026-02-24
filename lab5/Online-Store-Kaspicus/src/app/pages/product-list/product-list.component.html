@@ -1,0 +1,13 @@
+@if (products.length === 0)
+{ <p class="glass" style="font-size: 50px;"> Empty </p>}
+
+<div class="glass grid">
+    @for (p of products; track p.id)
+    {
+        <app-product-item [product] = "p"
+         (deleteProduct)="onDelete($event)"
+        >
+
+        </app-product-item>
+    }
+</div>
