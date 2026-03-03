@@ -1,0 +1,315 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 15px;
+  padding: 15px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ============ GLASS-ONLY (Marketplace үшін) ============ */
+
+/* Optional: default tint (ақ) */
+:root{
+  --glass-rgb: 255 255 255; /* "r g b" формат */
+  --glass-alpha: 0.10;
+}
+
+/* Негізгі glass қабаты */
+.glass {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
+  padding: 30px 10px 10px;
+
+  /* per-element override мүмкін */
+  --glass-rgb: var(--glass-rgb, 255 255 255);
+  --glass-alpha: var(--glass-alpha, 0.10);
+
+  background: rgba(var(--glass-rgb), var(--glass-alpha));
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+
+  box-shadow:
+    0 12px 34px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.glass:hover{
+  transform: translateY(-2px) scale(1.01);
+  border-color: rgba(255,255,255,0.24);
+  box-shadow:
+    0 18px 46px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.14);
+}
+
+/* Жеңіл “жарық” қабат */
+.glass::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius: inherit;
+
+  background:
+    radial-gradient(600px 140px at 20% 0%,
+      rgba(var(--glass-rgb), 0.18),
+      transparent 60%),
+    radial-gradient(520px 140px at 80% 0%,
+      rgba(var(--glass-rgb), 0.12),
+      transparent 60%);
+
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* Контент әйнектің үстінде тұрсын */
+.glass-content{
+  position: relative;
+  z-index: 2;
+}
+
+/* ============ OPTIONAL: Mouse highlight (glassApp) ============ */
+/* Егер “курсор тұрған жерге жарық” керек болса — қолдан */
+.glass-spot {
+  --mx: 50%;
+  --my: 50%;
+}
+
+.glass-spot::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--mx) var(--my),
+    rgba(var(--glass-rgb), 0.22),
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity 180ms ease;
+  z-index: 1;
+}
+
+.glass-spot:hover::after{
+  opacity: 1;
+}
+
+/* =============================
+   GLOBAL MOUSE GLOW
+   ============================= */
+
+:root {
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+/* Жарық қабаты */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      600px circle at var(--cursor-x) var(--cursor-y),
+      rgba(0, 180, 255, 0.15),
+      transparent 60%
+    );
+
+  transition: background 0.05s linear;
+}
+
+/* Контент glow үстінде тұрсын */
+body {
+  position: relative;
+  z-index: 1;
+}
+
+body::before {
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+
+  font-size: 18px;
+}
+
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #360c5d20;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+}
+
+.image-wrap {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: #f7f7f7;
+}
+
+.image-wrap img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.content {
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.name {
+  margin: 0;
+  font-size: 30px;
+}
+
+.name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.desc {
+  margin: 0;
+  color: #faa5f0;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+}
+  
+.star {
+  font-size: 14px;
+  opacity: 0.25;
+}
+
+.star.filled {
+  opacity: 1;
+}
+
+.badge {
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  border-radius: 10px;
+}
+
+.thumb {
+  border: 1px solid #ddd;
+  background: transparent;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.thumb.active {
+  border-color: #111111;
+}
+
+.thumb img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid #111;
+  text-decoration: none;
+  color: #fbdcdc;
+  font-size: 13px;
+  flex: 1;
+  background: none;
+}
+
+.btn.secondary {
+  border-color: #888;
+  color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.controls{
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+  
+.controls .btn {
+  flex: 1;
+}
+
+.btn.danger{
+  border-color: rgba(255,0,0,0.35);
+}
+
+.btn.danger:hover{
+  background: rgba(255,0,0,0.18);
+}

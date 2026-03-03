@@ -1,0 +1,37 @@
+<h1>Album Detail</h1>
+
+<div class="row">
+  <a [routerLink]="['/albums']">← Albums</a>
+  <a [routerLink]="['/albums', albumId, 'photos']">Photos →</a>
+</div>
+
+<p class="url glass">
+  Current: <a [routerLink]="currentUrl">{{ currentUrl }}</a>
+</p>
+
+@if (loading) {
+  <p>Loading album...</p>
+}
+
+@if (!loading && error) {
+  <p>{{ error }}</p>
+}
+
+@if (!loading && !error && album) {
+  <p><b>ID:</b> {{ album.id }}</p>
+  <p><b>User ID:</b> {{ album.userId }}</p>
+  <p><b>Title:</b> {{ album.title }}</p>
+
+  <label class="lbl">
+    <span><b>Title</b></span>
+    <input class="inp" [value]="editedTitle" (input)="editedTitle = ($any($event.target).value)" />
+  </label>
+
+  <div class="row">
+    <button class="btn glass" (click)="save()" [disabled]="saving">Save</button>
+    <a [routerLink]="['/albums', album.id, 'photos']">View Photos</a>
+    <button class="btn glass" (click)="back()">Backа</button>
+  </div>
+
+}
+

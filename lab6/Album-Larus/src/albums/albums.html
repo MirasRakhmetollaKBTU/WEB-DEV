@@ -1,0 +1,28 @@
+<h1>Albums</h1>
+
+@if (loading) {
+  <p>Loading albums...</p>
+}
+
+@if (!loading && error) {
+  <p>{{ error }}</p>
+}
+
+@if (!loading && !error && albums.length === 0) {
+  <p>No albums.</p>
+}
+
+@if (!loading && !error && albums.length > 0) {
+  <ul class="list glass">
+    @for (album of albums; track album.id) {
+      <li class="item glass">
+        <a class="link" [routerLink]="['/albums', album.id]">
+          <span class="id">#{{ album.id }}</span>
+          <span class="title">{{ album.title }}</span>
+        </a>
+
+        <button class="btn danger" (click)="deleteAlbum(album.id)">Delete</button>
+      </li>
+    }
+  </ul>
+}
