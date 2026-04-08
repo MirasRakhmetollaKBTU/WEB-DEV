@@ -1,0 +1,169 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+
+  font-size: 18px;
+}
+
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #360c5d20;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+}
+
+.image-wrap {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: #f7f7f7;
+}
+
+.image-wrap img {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.content {
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.name {
+  margin: 0;
+  font-size: 30px;
+}
+
+.name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.desc {
+  margin: 0;
+  color: #faa5f0;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+}
+  
+.star {
+  font-size: 14px;
+  opacity: 0.25;
+}
+
+.star.filled {
+  opacity: 1;
+}
+
+.badge {
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  border-radius: 10px;
+}
+
+.thumb {
+  border: 1px solid #ddd;
+  background: transparent;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.thumb.active {
+  border-color: #111111;
+}
+
+.thumb img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid #111;
+  text-decoration: none;
+  color: #fbdcdc;
+  font-size: 13px;
+  flex: 1;
+  background: none;
+}
+
+.btn.secondary {
+  border-color: #888;
+  color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.controls{
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+  
+.controls .btn {
+  flex: 1;
+}
+
+.btn.danger{
+  border-color: rgba(255,0,0,0.35);
+}
+
+.btn.danger:hover{
+  background: rgba(255,0,0,0.18);
+}

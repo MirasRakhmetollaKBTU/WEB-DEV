@@ -1,0 +1,144 @@
+body {
+  margin: 15px;
+  padding: 15px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ============ GLASS-ONLY (Marketplace үшін) ============ */
+
+/* Optional: default tint (ақ) */
+:root{
+  --glass-rgb: 255 255 255; /* "r g b" формат */
+  --glass-alpha: 0.10;
+}
+
+/* Негізгі glass қабаты */
+.glass {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
+  padding: 30px 10px 10px;
+
+  /* per-element override мүмкін */
+  --glass-rgb: var(--glass-rgb, 255 255 255);
+  --glass-alpha: var(--glass-alpha, 0.10);
+
+  background: rgba(var(--glass-rgb), var(--glass-alpha));
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+
+  box-shadow:
+    0 12px 34px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.glass:hover{
+  transform: translateY(-2px) scale(1.01);
+  border-color: rgba(255,255,255,0.24);
+  box-shadow:
+    0 18px 46px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.14);
+}
+
+/* Жеңіл “жарық” қабат */
+.glass::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius: inherit;
+
+  background:
+    radial-gradient(600px 140px at 20% 0%,
+      rgba(var(--glass-rgb), 0.18),
+      transparent 60%),
+    radial-gradient(520px 140px at 80% 0%,
+      rgba(var(--glass-rgb), 0.12),
+      transparent 60%);
+
+  opacity: 0.85;
+  z-index: 1;
+}
+
+/* Контент әйнектің үстінде тұрсын */
+.glass-content{
+  position: relative;
+  z-index: 2;
+}
+
+/* ============ OPTIONAL: Mouse highlight (glassApp) ============ */
+/* Егер “курсор тұрған жерге жарық” керек болса — қолдан */
+.glass-spot {
+  --mx: 50%;
+  --my: 50%;
+}
+
+.glass-spot::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius: inherit;
+  background: radial-gradient(
+    300px circle at var(--mx) var(--my),
+    rgba(var(--glass-rgb), 0.22),
+    transparent 75%
+  );
+  opacity: 0;
+  transition: opacity 180ms ease;
+  z-index: 1;
+}
+
+.glass-spot:hover::after{
+  opacity: 1;
+}
+
+/* =============================
+   GLOBAL MOUSE GLOW
+   ============================= */
+
+:root {
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+/* Жарық қабаты */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(
+      600px circle at var(--cursor-x) var(--cursor-y),
+      rgba(0, 180, 255, 0.15),
+      transparent 60%
+    );
+
+  transition: background 0.05s linear;
+}
+
+/* Контент glow үстінде тұрсын */
+body {
+  position: relative;
+  z-index: 1;
+}
+
+body::before {
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
